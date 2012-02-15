@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require './toc-generator.rb'
+
 SCRIPT_BASE = File.dirname(__FILE__)
 TMPFILE='/tmp/markdownpreview.html'
 
@@ -23,7 +25,8 @@ File.open(TMPFILE, 'w') do |f|
     pipe.close_write
     html = pipe.read
   end
-
+  toc = TocGenerator.new(html)
+  f.write toc.generate_toc
   f.write html
   f.write foot
 end
