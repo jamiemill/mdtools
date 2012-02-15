@@ -12,16 +12,19 @@
 require 'nokogiri'
 
 class TocGenerator
+
+  HEADING_SELECTOR = 'h1,h2,h3,h4,h5,h6'
+
   def initialize(html)
     @html = html
   end
 
   def generate_toc
-    doc = Nokogiri::HTML::DocumentFragment.parse @html
+    doc = get_doc_nokogiri
     toc = TocEntry.new
     toc.name = 'ROOT'
     toc.is_root = true
-    headings = doc.css('h1,h2,h3,h4,h5,h6')
+    headings = doc.css(HEADING_SELECTOR)
     last_entry_refs_by_depth = {
       0 => toc
     }
@@ -37,7 +40,7 @@ class TocGenerator
       heading_counter += 1
     end
 
-    html_for_toc toc
+    '<div class="toc"><h2>Contents</h2>' + html_for_toc(toc) + '</div>'
   end
 
   # Recusive function
@@ -56,7 +59,20 @@ class TocGenerator
   end
 
   def get_linked_html
+    doc = get_doc_nokogiri
+    headings = doc.css(HEADING_SELECTOR)
+    heading_counter = 1
+    headings.each do |heading|
+      heading['id'] = 'section-'+heading_counter.to_s
+      heading_counter += 1
+    end
+    doc.to_html
+  end
 
+  private
+
+  def get_doc_nokogiri
+     Nokogiri::HTML::DocumentFragment.parse @html
   end
 
 end

@@ -27,7 +27,7 @@ File.open(TMPFILE, 'w') do |f|
   end
   toc = TocGenerator.new(html)
   f.write toc.generate_toc
-  f.write html
+  f.write toc.get_linked_html
   f.write foot
 end
 
