@@ -44,7 +44,7 @@ Sample
 
 Here's a sample of the output:
 
-![Sample Image](sample.png)
+![Sample Image](https://github.com/jamiemill/mdtools/raw/master/sample.png)
 
 Feedback
 --------
