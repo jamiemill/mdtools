@@ -41,7 +41,21 @@ module MDTools
         e = TocEntry.new
         e.name = text
         e.counter = heading_counter
-        last_entry_refs_by_depth[depth-1].children << e
+
+        parent = last_entry_refs_by_depth[depth-1]
+
+        # if headings skip levels there could be a missing parent
+        # so we walk up the tree until we find a valid parent.
+        # TODO: Fix this up and write tests. May be a better way.
+        if parent.nil?
+          tmpdepth = depth-1
+          while parent.nil?
+            parent = last_entry_refs_by_depth[tmpdepth]
+            tmpdepth -= 1
+          end
+        end
+
+        parent.children << e
         last_entry_refs_by_depth[depth] = e
         heading_counter += 1
       end
