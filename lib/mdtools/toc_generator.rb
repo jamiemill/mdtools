@@ -76,6 +76,9 @@ module MDTools
 
     def get_root_title
       toc = generate_toc_obj
+      if toc.children.empty?
+        return "No title"
+      end
       toc.children.first.name
     end
 
