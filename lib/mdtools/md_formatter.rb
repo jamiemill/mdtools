@@ -4,8 +4,9 @@ require 'erb'
 module MDTools
   class MDFormatter
 
-    HEAD_TEMPLATE = File.expand_path(File.dirname(__FILE__) + '../../../templates/head.html.erb')
-    FOOT_TEMPLATE = File.expand_path(File.dirname(__FILE__) + '../../../templates/foot.html.erb')
+    TEMPLATE_PATH = File.expand_path('../../../templates', __FILE__)
+    HEAD_TEMPLATE = TEMPLATE_PATH + '/head.html.erb'
+    FOOT_TEMPLATE = TEMPLATE_PATH + '/foot.html.erb'
 
     def initialize(input, output, options)
 
