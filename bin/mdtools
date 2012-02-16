@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+# in case this script has been symlinked, get the real path
+THIS_FILE = File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FILE__
+$LOAD_PATH.unshift File.expand_path('../../lib', THIS_FILE)
 
 require 'mdtools'
 require 'optparse'
