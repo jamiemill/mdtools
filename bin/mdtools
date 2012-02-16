@@ -10,7 +10,7 @@ options = {
 }
 
 o = OptionParser.new do |opts|
-  # todo: add other commans apart from just 'format'
+  # todo: add other commands apart from just 'format'
   opts.banner = "Usage: mdtools format [options]"
   opts.on("-t", "--add-toc", "Add table of contents") do |op|
     options[:add_toc] = op
