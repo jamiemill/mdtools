@@ -7,7 +7,7 @@ module MDTools
     HEAD_TEMPLATE = File.expand_path(File.dirname(__FILE__) + '../../../templates/head.html.erb')
     FOOT_TEMPLATE = File.expand_path(File.dirname(__FILE__) + '../../../templates/foot.html.erb')
 
-    def initialize(input, output)
+    def initialize(input, output, options)
 
       head = ERB.new(IO.read(HEAD_TEMPLATE))
       foot = ERB.new(IO.read(FOOT_TEMPLATE))
@@ -27,11 +27,15 @@ module MDTools
       # write header
       output.write head.result(binding)
 
-      # write TOC
-      output.write toc.generate_toc
-
-      # write linked-up body
-      output.write toc.get_linked_html
+      if options[:add_toc]
+        # write TOC
+        output.write toc.generate_toc
+        # write linked-up body
+        output.write toc.get_linked_html
+      else
+        # just write the unchanged html body
+        output.write html
+      end
 
       # write footer
       output.write foot.result(binding)

@@ -3,6 +3,30 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'mdtools'
+require 'optparse'
 
-# todo: parse options and load different class
-mdformatter = MDTools::MDFormatter.new(STDIN, STDOUT)
+options = {
+  :add_toc => false,
+}
+
+o = OptionParser.new do |opts|
+  # todo: add other commans apart from just 'format'
+  opts.banner = "Usage: mdtools format [options]"
+  opts.on("-t", "--add-toc", "Add table of contents") do |op|
+    options[:add_toc] = op
+  end
+end
+o.parse!
+
+if ARGV.count < 1
+  puts o.help
+  exit
+end
+
+command = ARGV[0]
+
+if command == 'format'
+  mdformatter = MDTools::MDFormatter.new(STDIN, STDOUT, options)
+else
+  puts o.help
+end
