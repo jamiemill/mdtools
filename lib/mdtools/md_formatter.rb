@@ -4,8 +4,8 @@ require 'erb'
 module MDTools
   class MDFormatter
 
-    TEMPLATE_PATH = File.expand_path('../../../templates', __FILE__)
-    TEMPLATE = TEMPLATE_PATH + '/default.html.erb'
+    DEFAULT_TEMPLATE_PATH = File.expand_path('../../../templates', __FILE__)
+    DEFAULT_TEMPLATE = DEFAULT_TEMPLATE_PATH + '/default.html.erb'
 
     def initialize(input, output, options)
 
@@ -14,7 +14,13 @@ module MDTools
       @toc = ''
       @content = ''
 
-      template = ERB.new(IO.read(TEMPLATE))
+      if(options[:template])
+        template_path = File.expand_path(options[:template])
+      else
+        template_path = DEFAULT_TEMPLATE
+      end
+
+      template = ERB.new(IO.read(template_path))
 
       # convert markdown to HTML
       input = STDIN.read

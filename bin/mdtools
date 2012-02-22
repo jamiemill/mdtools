@@ -10,13 +10,17 @@ require 'optparse'
 
 options = {
   :add_toc => false,
+  :template => nil,
 }
 
 o = OptionParser.new do |opts|
   # todo: add other commands apart from just 'format'
   opts.banner = "Usage: mdtools format [options]"
-  opts.on("-t", "--add-toc", "Add table of contents") do |op|
+  opts.on("-T", "--add-toc", "Add table of contents") do |op|
     options[:add_toc] = op
+  end
+  opts.on("-t", "--template [TEMPLATE]", "Specify alternate template path") do |template|
+    options[:template] = template
   end
 end
 o.parse!
