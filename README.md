@@ -26,7 +26,12 @@ Then symlink the `bin/mdtools` script into your path somewhere:
 Usage
 -----
 
-`mdtools format --add-toc < inputfile.md > outputfile.html`
+	mdtools format --add-toc < inputfile.md > outputfile.html
+
+If you want to use a template of your own rather than the default (see templates/default.html.erb)
+for an example to copy.
+
+	mdtools format --add-toc --template path/to/template.html.erb < inputfile.md > outputfile.html
 
 Vim Preview
 -----------
