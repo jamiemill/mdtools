@@ -5,8 +5,11 @@ The beginnings of a suite of tools for processing markdown. I made it so that I
 could write documents for clients in markdown, and then deliver a nice looking
 HTML page with a clickable table of contents.
 
-At the moment the only command is `format` which converts markdown into a
-pretty HTML page with some basic styles.
+At the moment the only command is `format` which converts markdown into HTML while
+wrapping with a user-defined HTML template (e.g. for adding company header/footer).
+
+The default template has some nice basic styles for headings, text, body width,
+codeblocks etc.
 
 It can also optionally generate a clickable table of contents from the document
 headings outline.
