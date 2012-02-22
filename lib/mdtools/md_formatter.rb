@@ -5,14 +5,16 @@ module MDTools
   class MDFormatter
 
     TEMPLATE_PATH = File.expand_path('../../../templates', __FILE__)
-    HEAD_TEMPLATE = TEMPLATE_PATH + '/head.html.erb'
-    FOOT_TEMPLATE = TEMPLATE_PATH + '/foot.html.erb'
+    TEMPLATE = TEMPLATE_PATH + '/default.html.erb'
 
     def initialize(input, output, options)
 
-      head = ERB.new(IO.read(HEAD_TEMPLATE))
-      foot = ERB.new(IO.read(FOOT_TEMPLATE))
+      # these attributes will be called by the template
+      @title = ''
+      @toc = ''
+      @content = ''
 
+      template = ERB.new(IO.read(TEMPLATE))
 
       # convert markdown to HTML
       input = STDIN.read
@@ -25,21 +27,18 @@ module MDTools
       toc = TocGenerator.new(html)
       @title = toc.get_root_title
 
-      # write header
-      output.write head.result(binding)
-
       if options[:add_toc]
         # write TOC
-        output.write toc.generate_toc
+        @toc = toc.generate_toc
         # write linked-up body
-        output.write toc.get_linked_html
+        @content = toc.get_linked_html
       else
         # just write the unchanged html body
-        output.write html
+        @content = html
       end
 
       # write footer
-      output.write foot.result(binding)
+      output.write template.result(binding)
 
     end
   end
