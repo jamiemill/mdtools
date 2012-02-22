@@ -56,7 +56,7 @@ browser.
 Sample
 ------
 
-Here's a sample of the output:
+Here's a sample of the output of the default template with TOC enabled:
 
 ![Sample Image](https://github.com/jamiemill/mdtools/raw/master/sample.png)
 
