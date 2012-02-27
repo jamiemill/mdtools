@@ -5,14 +5,22 @@ The beginnings of a suite of tools for processing markdown. I made it so that I
 could write documents for clients in markdown, and then deliver a nice looking
 HTML page with a clickable table of contents.
 
+The "Format" Command
+------------------
+
 At the moment the only command is `format` which converts markdown-generated
-html output into a pretty HTML page with some basic styles.
+html output by wrapping with a user-defined HTML template (e.g. for adding company header/footer).
+
+HTML templates are parsed by ERB so you can include ruby in them and echo out
+the content, title and table of contents where you like.
+
+The default template has some nice basic styles for headings, text, body width,
+codeblocks etc.
 
 It can also optionally generate a clickable table of contents from the document
 headings outline.
 
 It reads from STDIN and prints to STDOUT.
-
 
 Symlink the `bin/mdtools` script into your path somewhere:
 
@@ -20,7 +28,6 @@ Symlink the `bin/mdtools` script into your path somewhere:
 
 Usage
 -----
-
 
 
 	markdown < inputfile.md | mdtools format --add-toc > outputfile.html
@@ -44,7 +51,7 @@ browser.
 Sample
 ------
 
-Here's a sample of the output:
+Here's a sample of the output of the default template with TOC enabled:
 
 ![Sample Image](https://github.com/jamiemill/mdtools/raw/master/sample.png)
 
