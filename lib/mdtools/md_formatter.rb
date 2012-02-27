@@ -22,14 +22,7 @@ module MDTools
 
       template = ERB.new(IO.read(template_path))
 
-      # convert markdown to HTML
-      input = STDIN.read
-      html = ''
-      IO.popen('markdown --html4tags', 'r+') do |pipe|
-        pipe.puts(input)
-        pipe.close_write
-        html = pipe.read
-      end
+      html = STDIN.read
       toc = TocGenerator.new(html)
       @title = toc.get_root_title
 
