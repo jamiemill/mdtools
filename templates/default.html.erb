@@ -4,45 +4,61 @@
         <meta charset="UTF-8">
 		<title><%= @title %></title>
 		<style type="text/css">
-			body {
-				font-family: sans-serif;
-				color: #666;
-				max-width: 60em;
-				margin: 0 auto;
-				padding: 1em;
-				line-height: 1.5em;
-			}
-			h1,h2,h3,h4,h5 {
-				color: #222;
-				margin: 1em 0;
-			}
-			h1,h2 {
-				border-bottom: 1px solid #ccc;
-				padding-bottom: 0.5em;
-				overflow: hidden;
-			}
-			pre,
-			code {
-				background-color: #ffffcc;
-				padding: 0.2em;
-				border: 1px solid #ddddaa;
-				border-radius: 0.25em;
-			}
-			pre code {
-				background: none;
-				border: none;
-			}
-			.toc {
-				font-size: 80%;
-				padding: 1em;
-				margin: 1em 0 1em 1em;
-				float: right;
-				background-color: #eee;
-				max-width: 20em;
-			}
-			.toc h2 {
-				margin-top: 0;
-			}
+            body {
+                font-family: Avenir, sans-serif;
+                font-size: 16px;
+                line-height: 175%;
+                color: #666;
+                max-width: 60em;
+                margin: 0 auto;
+                padding: 1em;
+            }
+            h1,h2,h3,h4,h5 {
+                color: #222;
+                margin: 1em 0;
+            }
+            h3 {
+                text-transform: uppercase;
+            }
+            h4 {
+                text-transform: uppercase;
+                color: #666;
+            }
+            h5 {
+                color: #666;
+            }
+            pre,
+            code {
+                font-family: "Fira Mono", Menlo, monospace;
+                font-size: 14px;
+                line-height: 150%;
+                background-color: #ddeeff;
+                padding: 0.5em;
+                border-radius: 0.25em;
+            }
+            pre code {
+                background: none;
+                border: none;
+            }
+            .toc {
+                font-size: 80%;
+                padding: 1em;
+                margin: 1em 0 1em 1em;
+                float: right;
+                border-left: 1px solid #ddeeff;
+                max-width: 20em;
+            }
+            .toc h2 {
+                margin-top: 0;
+            }
+            .toc ul, .toc li {
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
+            .toc ul ul {
+                margin-left: 0.5em;
+            }
 		</style>
 	</head>
 	<body>
