@@ -25,6 +25,10 @@ It reads from STDIN and prints to STDOUT.
 Install
 -------
 
+Install dependencies:
+
+    bundle install
+
 Symlink the `bin/mdtools` script into your path somewhere:
 
 	ln -s /full/path/to/bin/mdtools /usr/local/bin/mdtools
