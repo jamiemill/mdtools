@@ -6,7 +6,7 @@ could write documents for clients in markdown, and then deliver a nice looking
 HTML page with a clickable table of contents.
 
 The "Format" Command
-------------------
+--------------------
 
 At the moment the only command is `format` which converts markdown-generated
 html output by wrapping with a user-defined HTML template (e.g. for adding company header/footer).
@@ -21,6 +21,9 @@ It can also optionally generate a clickable table of contents from the document
 headings outline.
 
 It reads from STDIN and prints to STDOUT.
+
+Install
+-------
 
 Symlink the `bin/mdtools` script into your path somewhere:
 
