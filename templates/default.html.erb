@@ -5,7 +5,7 @@
 		<title><%= @title %></title>
 		<style type="text/css">
             body {
-                font-family: Avenir, sans-serif;
+                font-family: "Avenir Next", Avenir, sans-serif;
                 font-size: 16px;
                 line-height: 175%;
                 color: #666;
@@ -32,7 +32,7 @@
                 font-family: "Fira Mono", Menlo, monospace;
                 font-size: 14px;
                 line-height: 150%;
-                background-color: #ddeeff;
+                background-color: #eee;
                 padding: 0.5em;
                 border-radius: 0.25em;
             }
@@ -40,16 +40,24 @@
                 background: none;
                 border: none;
             }
+            .has-toc .content {
+                margin-left: 17em;
+            }
             .toc {
                 font-size: 80%;
-                padding: 1em;
-                margin: 1em 0 1em 1em;
-                float: right;
-                border-left: 1px solid #ddeeff;
-                max-width: 20em;
+                float: left;
+                width: 19em;
+                margin-top: 3em;
             }
             .toc h2 {
                 margin-top: 0;
+                margin-bottom: 2em;
+                text-transform: uppercase;
+                color: #666;
+                font-size: 1em;
+            }
+            .toc a {
+                color: #666;
             }
             .toc ul, .toc li {
                 padding: 0;
@@ -61,8 +69,10 @@
             }
 		</style>
 	</head>
-	<body>
+    <body class="<%= @toc.length > 0 ? "has-toc" : "" %>">
 		<%= @toc %>
-		<%= @content %>
+        <div class="content">
+		    <%= @content %>
+        </div>
 	</body>
 </html>
